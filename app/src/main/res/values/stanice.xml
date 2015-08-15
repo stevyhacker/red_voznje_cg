@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="stanice_array">
+        <item>Podgorica</item>
+        <item>Niksic</item>
+        <item>Pljevlja</item>
+        <item>Bijelo Polje</item>
+        <item>Cetinje</item>
+        <item>Bar</item>
+        <item>Herceg Novi</item>
+        <item>Berane</item>
+        <item>Budva</item>
+        <item>Ulcinj</item>
+        <item>Tivat</item>
+        <item>Kotor</item>
+        <item>Danilovgrad</item>
+        <item>Mojkovac</item>
+        <item>Kolašin</item>
+        <item>Zabljak</item>
+        <item>Pluzine</item>
+    </string-array>
+
+</resources>
