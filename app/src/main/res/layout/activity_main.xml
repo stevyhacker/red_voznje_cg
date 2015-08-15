@@ -105,7 +105,7 @@
         android:id="@+id/importapiProgressLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/searchButton"
+        android:layout_below="@+id/statusTextView"
         android:layout_centerHorizontal="true"
         android:orientation="vertical"
         android:visibility="gone">
