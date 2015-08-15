@@ -68,8 +68,6 @@ public class MainActivity extends AppCompatActivity {
         odredisteAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         odredisteSpinner.setAdapter(odredisteAdapter);
 
-//        String[][] dataToShow = {{"00:30\n", "10:30\n", "10:00", "Više prevoznika"},
-//                {"and", "a", "second", "test"}};
 
         SimpleTableHeaderAdapter simpleTableHeaderAdapter = new SimpleTableHeaderAdapter(this, "Polazak", "Dolazak", "Prevoznik");
         simpleTableHeaderAdapter.setTextSize(16);
@@ -142,9 +140,7 @@ public class MainActivity extends AppCompatActivity {
                     statusTextView.setText("Nema rezultata.");
                     WebTask task = new WebTask();
                     task.execute(url);
-                }
-
-                else {
+                } else {
                     statusTextView.setVisibility(View.VISIBLE);
                     statusTextView.setText("Provjerite vašu internet konekciju.");
                 }
