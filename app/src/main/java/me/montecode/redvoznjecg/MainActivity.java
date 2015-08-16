@@ -1,6 +1,7 @@
 package me.montecode.redvoznjecg;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
@@ -43,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
     TextView statusTextView;
     private ArrayList<String[]> values = new ArrayList<>();
     SimpleTableDataAdapter simpleTableDataAdapter;
+    TextView warningTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,8 +56,11 @@ public class MainActivity extends AppCompatActivity {
         final Spinner odredisteSpinner = (Spinner) findViewById(R.id.odredisteSpinner);
         final EditText dateEditText = (EditText) findViewById(R.id.dateEditText);
         Button searchButton = (Button) findViewById(R.id.searchButton);
+        Button listOfStationsButton = (Button) findViewById(R.id.listOfBusStationsButton);
+
         resultsTableView = (TableView) findViewById(R.id.tableView);
         statusTextView = (TextView) findViewById(R.id.statusTextView);
+        warningTextView = (TextView) findViewById(R.id.warningTextView);
 
         ArrayAdapter<CharSequence> polazisteAdapter = ArrayAdapter.createFromResource(this,
                 R.array.stanice_array, android.R.layout.simple_spinner_item);
@@ -91,6 +96,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 resultsTableView.setVisibility(View.GONE);
+                warningTextView.setVisibility(View.GONE);
                 if (position == odredisteSpinner.getSelectedItemPosition()) {
                     Toast.makeText(getApplicationContext(), "Izabrali ste isto polazište kao i odredište.", Toast.LENGTH_SHORT).show();
                 }
@@ -105,6 +111,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 resultsTableView.setVisibility(View.GONE);
+                warningTextView.setVisibility(View.GONE);
                 if (position == polazisteSpinner.getSelectedItemPosition()) {
                     Toast.makeText(getApplicationContext(), "Izabrali ste isto polazište kao i odredište.", Toast.LENGTH_SHORT).show();
                 }
@@ -144,6 +151,14 @@ public class MainActivity extends AppCompatActivity {
                     statusTextView.setVisibility(View.VISIBLE);
                     statusTextView.setText("Provjerite vašu internet konekciju.");
                 }
+            }
+        });
+
+        listOfStationsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(),ListOfStationsActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -220,6 +235,7 @@ public class MainActivity extends AppCompatActivity {
                     simpleTableDataAdapter = new SimpleTableDataAdapter(getApplicationContext(), values);
                     resultsTableView.setDataAdapter(simpleTableDataAdapter);
                     resultsTableView.setVisibility(View.VISIBLE);
+                    warningTextView.setVisibility(View.VISIBLE);
 
                     //known issue 0.9.6 will be fixed FIX UPDATING ADAPTER
 //                simpleTableDataAdapter.notifyDataSetChanged();

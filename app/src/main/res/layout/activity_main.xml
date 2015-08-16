@@ -10,14 +10,14 @@
 
     <LinearLayout
 
-        android:divider="?android:dividerHorizontal"
-        android:showDividers="middle"
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:divider="?android:dividerHorizontal"
         android:orientation="horizontal"
         android:paddingLeft="@dimen/activity_horizontal_margin"
-        android:paddingRight="@dimen/activity_horizontal_margin">
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:showDividers="middle">
 
 
         <LinearLayout
@@ -44,8 +44,6 @@
                 android:spinnerMode="dropdown" />
 
         </LinearLayout>
-
-
 
 
         <LinearLayout
@@ -82,24 +80,54 @@
         android:layout_below="@+id/linearLayout"
         android:background="?android:attr/listDivider" />
 
-    <EditText
-        android:id="@+id/dateEditText"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/searchLayout"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/separator1"
-        android:layout_centerHorizontal="true"
-        android:ems="8"
-        android:gravity="center"
-        android:inputType="date" />
+        android:orientation="horizontal">
 
-    <Button
-        android:id="@+id/searchButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/dateEditText"
-        android:layout_centerHorizontal="true"
-        android:layout_margin="10dp"
-        android:text="Pretraži" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/dateEditText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:ems="8"
+                android:gravity="center_horizontal"
+                android:inputType="date" />
+
+            <Button
+                android:id="@+id/searchButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="5dp"
+                android:text="Pretraži" />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/listOfBusStationsButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_weight="1"
+            android:text="Spisak autobuskih stanica" />
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/separator2"
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/searchLayout"
+        android:background="?android:attr/listDivider" />
 
     <LinearLayout
         android:id="@+id/importapiProgressLayout"
@@ -114,6 +142,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
+            android:layout_marginTop="5dp"
             android:text="Pretraživanje baze podataka u toku..." />
 
         <ProgressBar
@@ -125,22 +154,33 @@
     </LinearLayout>
 
     <TextView
-        android:visibility="gone"
+        android:id="@+id/statusTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/separator2"
+        android:layout_marginTop="5dp"
         android:layout_centerInParent="true"
         android:text="Nema rezultata."
         android:textSize="18sp"
-        android:id="@+id/statusTextView"
-        android:layout_below="@+id/searchButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:visibility="gone" />
 
     <de.codecrafters.tableview.TableView
         android:id="@+id/tableView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/searchButton"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/warningTextView"
+        android:layout_below="@id/separator2"
         android:visibility="gone"
         custom:columnCount="4" />
 
+    <TextView
+        android:id="@+id/warningTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="5dp"
+        android:text="Ne garantuje se 100% tačnost datih informacija. Sve informacije možete provjeriti kontaktiranjem odgovarajuće autobuske stanice. "
+        android:textSize="11dp"
+        android:visibility="gone" />
 
 </RelativeLayout>
